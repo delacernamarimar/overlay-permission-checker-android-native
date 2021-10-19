@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">OverlayPermissionChecker</string>
+    <string name="check_overlay">Check Overlay</string>
+    <string name="go_to_settings">Go to Settings</string>
+</resources>
