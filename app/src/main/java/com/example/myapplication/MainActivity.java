@@ -57,8 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (!Settings.canDrawOverlays(this)) {
                 checkPermission();
             } else {
-                Toast.makeText(getApplicationContext(),"App can overlay!",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "App can overlay!", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!Settings.canDrawOverlays(this)) {
-                builder.setMessage("Please turn on Overlay in settings to use the apps") .setTitle("Permission Request")
+                builder.setMessage("Please turn on Overlay in settings to use the apps").setTitle("Permission Request")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -75,20 +74,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                Toast.makeText(getApplicationContext(),"You can't use this apps while Overlay settings is removed",
+                                Toast.makeText(getApplicationContext(), "You can't use this apps while Overlay settings is removed",
                                         Toast.LENGTH_SHORT).show();
                                 finishAffinity();
                             }
                         });
                 AlertDialog alert = builder.create();
                 alert.show();
+            } else {
+                Toast.makeText(getApplicationContext(), "App can overlay!", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.checkOverlay:
                 checkPermission();
                 break;
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void gotoOverlaySettings(){
+    public void gotoOverlaySettings() {
         Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                 Uri.parse("package:" + getPackageName()));
         startActivityForResult(intent, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE);
